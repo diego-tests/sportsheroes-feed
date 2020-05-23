@@ -29,7 +29,6 @@ export default new Vuex.Store({
   actions: {
     [GET_RECENT_ACTIVITIES]({ commit }) {
       const storedActivities = localStorage.getItem('activities') 
-      console.log(storedActivities)
 
       if (storedActivities) {
         commit(SET_ACTIVITIES, JSON.parse(storedActivities))
