@@ -1,0 +1,1 @@
+export const GET_RECENT_ACTIVITIES = 'Get recent activities'

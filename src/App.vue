@@ -1,30 +1,22 @@
 <template>
-    <div id="app">
-        <img
-            alt="Vue logo"
-            src="./assets/logo.png"
-        >
-    </div>
+    <div id="app" />
 </template>
 
 <script>
-
+import { GET_RECENT_ACTIVITIES } from './store/_actionTypes'
+import { mapActions } from 'vuex'
 export default {
   name: 'App',
   components: {
+  },
+  created() {
+    this.GET_RECENT_ACTIVITIES()
+  },
+  methods: {
+    ...mapActions({ GET_RECENT_ACTIVITIES }),
   },
 }
 </script>
 <style lang="scss">
 @use './scss/global';
-</style>
-<style>
-#app {
-    color: #2c3e50;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin-top: 60px;
-    text-align: center;
-}
 </style>
