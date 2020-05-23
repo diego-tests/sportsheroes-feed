@@ -1,0 +1,61 @@
+$small:  48rem !default; // ≈ 480px
+$medium: 76.8rem !default; // ≈ 768px
+$large:  96rem !default; // ≈ 960px
+$wide:   120rem !default; // ≈ 1200px
+
+$max-desktop: $large !default;
+
+$media-queries: true !default; // true by default
+
+@mixin breakpoint($min-width: false, $max-width: false, $prefix: false) {
+    @if $media-queries {
+        @if $min-width {
+            @if $max-width {
+                @media all and (min-width: $min-width) and (max-width: $max-width) {
+                    @if $prefix {
+                        #{"." + $prefix} {
+                            @content;
+                        }
+                    }
+
+                    @else {
+                        @content;
+                    }
+                }
+            }
+
+            @else {
+                @media all and (min-width: $min-width) {
+                    @if $prefix {
+                        #{"." + $prefix} {
+                            @content;
+                        }
+                    }
+
+                    @else {
+                        @content;
+                    }
+                }
+            }
+        }
+
+        @else if $max-width {
+            @media all and (max-width: $max-width) {
+                @if $prefix {
+                    #{"." + $prefix} {
+                        @content;
+                    }
+                }
+
+                @else {
+                    @content;
+                }
+            }
+        }
+    }
+
+    @else if $min-width and $min-width <= $max-desktop and
+        (not $max-width or $max-width and $max-width >= $max-desktop) {
+        @content;
+    }
+}
