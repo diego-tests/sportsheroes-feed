@@ -1,27 +1,28 @@
 <template>
     <section id="app">
-        <ActivityCard 
-            v-for="activity in activities"
-            :key="activity.id"
-            :activity="activity"
+        <DayActivities 
+            v-for="day in days" 
+            :key="day.id"
+            :date="day.date"
+            :activities="day.activities"
         />
     </section>
 </template>
 
 <script>
 import { GET_RECENT_ACTIVITIES } from './store/_actionTypes'
-import { mapActions, mapState } from 'vuex'
+import { ACTIVITIES_PER_DAY } from './store/_getterTypes'
+import { mapActions, mapGetters } from 'vuex'
 
-import ActivityCard from './components/ActivityCard/ActivityCard'
-
+import DayActivities from './components/DayActivities/DayActivities'
 
 export default {
   name: 'App',
   components: {
-    ActivityCard,
+    DayActivities,
   },
   computed: {
-    ...mapState(['activities']),
+    ...mapGetters({ days: ACTIVITIES_PER_DAY }),
   },
   created() {
     this.GET_RECENT_ACTIVITIES()
