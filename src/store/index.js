@@ -36,7 +36,7 @@ export default new Vuex.Store({
 
       const params = DEFAULT_PARAMS
 
-      axios(`${API_URL}/v3/users/${USER}/activities`, null, params)
+      axios(`${API_URL}/v3/users/${USER}/activities`, { params })
         .then(res => commit(SET_ACTIVITIES, res?.data?.results))
         .catch(err=> console.error(err))
 
