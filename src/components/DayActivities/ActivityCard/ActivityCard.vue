@@ -3,7 +3,7 @@
         <div class="left">
             <ActivityImage :type="activity.type" />
             <div class="text">
-                <h3>{{ activity.type }}</h3>
+                <h3>{{ $t(`activities.${activity.type}`) }}</h3>
                 <ActivityEffort :effort="effort" />
             </div>
         </div>
