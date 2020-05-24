@@ -3,7 +3,7 @@
         <div
             class="credits"
         >
-            Crédits <span data-testid="credits">{{ credits }} </span>
+            Crédits: <span data-testid="credits">{{ credits }} </span>
         </div>
         <div
             class="points"

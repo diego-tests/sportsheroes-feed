@@ -94,6 +94,9 @@ export default new Vuex.Store({
   },
   getters: {
     [ACTIVITIES_PER_DAY](state) {
+      if (!state.activities) {
+        return []
+      }
       return state.activities.reduce(activitiesPerDayReducer, [])
     },
   },

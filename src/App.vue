@@ -1,11 +1,16 @@
 <template>
     <section id="app">
-        <DayActivities 
-            v-for="day in days" 
-            :key="day.id"
-            :date="day.date"
-            :activities="day.activities"
-        />
+        <h1>Activity feed</h1>
+        <ul class="days">
+            <transition-group name="tr-day">
+                <DayActivities 
+                    v-for="day in days" 
+                    :key="day.id"
+                    :date="day.date"
+                    :activities="day.activities"
+                />
+            </transition-group>
+        </ul>
         <div
             ref="bottom"
             class="loader-wrapper"
@@ -59,8 +64,38 @@ export default {
 @use './scss/global';
 </style>
 <style lang="scss" scoped>
+@use './scss/color';
+
+#app {
+    margin: auto;
+    max-width: 60rem;
+    padding: 1.5rem;
+}
+
+h1 {
+    color: color.$black;
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 2rem 0;
+}
+
+.days {
+    background: #f2f5f6;
+    padding: 1.5rem;
+}
+
 .loader-wrapper {
-    margin: 1rem auto;
-    max-width: 20rem;
+    margin: 2rem auto;
+    max-width: 10rem;
+}
+
+.tr-day-enter-active,
+.tr-day-leave-active {
+    transition: transform 500ms;
+}
+
+.tr-day-enter,
+.tr-day-leave-to {
+    transform: translateY(50%);
 }
 </style>
