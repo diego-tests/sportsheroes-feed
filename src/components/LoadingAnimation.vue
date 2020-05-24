@@ -17,7 +17,7 @@ div {
 
 span {
     animation: jump 2000ms ease-out 0ms infinite running;
-    background: black;
+    background: #3d3d3d;
     border-radius: 50%;
     display: block;
     padding: 8%;

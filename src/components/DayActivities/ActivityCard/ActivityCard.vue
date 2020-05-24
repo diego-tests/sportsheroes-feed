@@ -1,10 +1,14 @@
 <template>
-    <article>
-        <ActivityImage :type="activity.type" />
-        <h3>{{ activity.type }}</h3>
-        <ActivityEffort :effort="effort" />
+    <li class="activity">
+        <div class="left">
+            <ActivityImage :type="activity.type" />
+            <div class="text">
+                <h3>{{ activity.type }}</h3>
+                <ActivityEffort :effort="effort" />
+            </div>
+        </div>
         <ActivityCredits :points="activity.points" />
-    </article>
+    </li>
 </template>
 <script>
 import ActivityImage from './ActivityImage'
@@ -34,3 +38,39 @@ export default {
   },
 }
 </script>
+<style lang="scss" scoped>
+@use '../../../scss/color';
+
+.activity {
+    background: white;
+    border-radius: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
+    width: 100%;
+
+    & + & {
+        margin: 1rem 0 0;
+    }
+}
+
+.left {
+    align-items: stretch;
+    display: flex;
+}
+
+.text {
+    color: color.$grey-1;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+    justify-content: space-between;
+    margin: 0 0 0 1rem;
+}
+
+h3 {
+    color: color.$black;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+</style>
